@@ -5,10 +5,9 @@ const pauseBtn = document.getElementById('pauseBtn');
 const resumeBtn = document.getElementById('resumeBtn');
 
 //recarregar pag
-const reload = document.getElementById('reload');
-reload.addEventListener('click', () => {
+function reload(){
     document.location.reload();
-})
+}
 
 //valores numeros html
 const hoursHT = document.getElementById('hoursHT');

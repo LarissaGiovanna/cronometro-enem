@@ -1,6 +1,26 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .btns{
     margin-top: 1rem;
+    display: flex;
 }
 #pauseBtn, #resumeBtn{
     display: none;
+}
+
+.error{
+    display: flex;
+    align-items: center;
+}
+
+.error a{
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.error a:hover{
+    color: gray;
 }

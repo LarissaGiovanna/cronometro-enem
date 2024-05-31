@@ -17,36 +17,61 @@
 <body>
     <main>
 
-        <div class="options">
-            <input type="radio" name="dia" id="normal" value="normal">
-            <label for="normal">Normal</label>
-            <input type="radio" name="dia" id="dia1" value="dia1">
-            <label for="dia1">Dia 1</label>
-            <input type="radio" name="dia" id="dia2" value="dia2">
-            <label for="dia2">Dia 2</label>
-            <div class="error">
-                <p>Caso o tempo pareça estar mais rápido ou se você achou alguma coisa estranha,  atualize a página clicando</p><a onclick="reload()">aqui</a>
+        <div class="error posicao">
+            <p>Caso o tempo pareça estar mais rápido ou se você achou alguma coisa estranha, atualize a página clicando
+                aqui:</p>
+            <button id="reload" onclick="reload()"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+
+        <div class="flex-box">
+            <div class="options">
+                <div class="format">
+                    <div class="marcador">
+                        <input type="radio" name="dia" id="normal" value="normal">
+                        <label for="normal">Normal</label>
+                    </div>
+                    <div class="marcador">
+                        <input type="radio" name="dia" id="dia1" value="dia1">
+                        <label for="dia1">Dia 1</label>
+                    </div>
+                    <div class="marcador">
+                        <input type="radio" name="dia" id="dia2" value="dia2">
+                        <label for="dia2">Dia 2</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crono">
+                <h1>Cronômetro</h1>
+                <div class="sp">
+                    <span id="hoursHT">00</span>
+                    <span class="divsor">:</span>
+                    <span id="minutesHT">00</span>
+                    <span class="divsor">:</span>
+                    <span id="secondsHT">00</span>
+                </div>
+
+                <div class="btns">
+                    <button id="resetBtn"><i class="fa-solid fa-clock-rotate-left"></i></button>
+                    <button id="startBtn"><i class="fa-solid fa-play"></i></button>
+                    <button id="pauseBtn"><i class="fa-solid fa-pause"></i></button>
+                    <button id="resumeBtn"><i class="fa-solid fa-play"></i></button>
+                </div>
+
+                <span id="rest"></span>
+
             </div>
         </div>
 
-        <h1>Cronômetro</h1>
-        <span id="hoursHT">00</span>
-        <span class="divsor">:</span>
-        <span id="minutesHT">00</span>
-        <span class="divsor">:</span>
-        <span id="secondsHT">00</span>
-        <span class="divsor">:</span>
-        <span id="milisecHT">000</span>
-
-        <div class="btns">
-            <button id="resetBtn"><i class="fa-solid fa-clock-rotate-left"></i></button>
-            <button id="startBtn"><i class="fa-solid fa-play"></i></button>
-            <button id="pauseBtn"><i class="fa-solid fa-pause"></i></button>
-            <button id="resumeBtn"><i class="fa-solid fa-play"></i></button>
-        </div>
-
-        <span id="rest"></span>
     </main>
+
+    <footer>
+        <div class="footer">
+            <a href="https://github.com/LarissaGiovanna"><img src="img/GitHub_Logo.png" alt=""></a>
+            <p>Larissa Giovanna &copy; 2024 </p>
+        </div>
+    </footer>
+
     <script src="js/script.js" defer></script>
 </body>
 

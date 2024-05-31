@@ -5,7 +5,7 @@ const pauseBtn = document.getElementById('pauseBtn');
 const resumeBtn = document.getElementById('resumeBtn');
 
 //recarregar pag
-function reload(){
+function reload() {
     document.location.reload();
 }
 
@@ -13,7 +13,6 @@ function reload(){
 const hoursHT = document.getElementById('hoursHT');
 const minutesHT = document.getElementById('minutesHT');
 const secondsHT = document.getElementById('secondsHT');
-const milisecHT = document.getElementById('milisecHT');
 
 //variaveis tempo
 let interval = 0;
@@ -34,12 +33,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
             if (radio.value == 'dia1') {
                 resetTime();
-                console.log(`${radio.value}`, " radio");
                 startBtn.addEventListener('click', startTimeFirstDay);
             }
             if (radio.value == 'dia2') {
                 resetTime();
-                console.log(`${radio.value}`, " radio");
                 startBtn.addEventListener('click', startTimeSecDay);
             }
         })
@@ -79,7 +76,6 @@ function startTime() {
             hoursHT.textContent = formatTime(hours);
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
-            milisecHT.textContent = formatMilisec(milisec);
         }
     }, 10)//a cada 10 milisec
 
@@ -114,7 +110,6 @@ function startTimeFirstDay() {
             hoursHT.textContent = formatTime(hours);
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
-            milisecHT.textContent = formatMilisec(milisec);
 
             const rest = document.getElementById('rest');
 
@@ -205,7 +200,6 @@ function startTimeSecDay() {
             hoursHT.textContent = formatTime(hours);
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
-            milisecHT.textContent = formatMilisec(milisec);
 
             const rest = document.getElementById('rest');
 
@@ -290,7 +284,6 @@ function resetTime() {
     hoursHT.textContent = '00';
     minutesHT.textContent = '00';
     secondsHT.textContent = '00';
-    milisecHT.textContent = '000';
 
     startBtn.style.display = 'block';
     resumeBtn.style.display = 'none';

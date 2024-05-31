@@ -1,26 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    background-image: url(../img/background.jpg);
+}
+.flex-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+
+/*div dos marcadores*/
+.options {
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.btns{
-    margin-top: 1rem;
+
+.format {
     display: flex;
+    gap: 15px;
 }
+
+.marcador {
+    display: flex;
+    padding: 20px;
+    gap: 5px;
+    background-color: rgba(2, 2, 31, 0.473);
+    color: #f5f5f5;
+    border-radius: 20px;
+}
+.marcador input {
+    cursor: pointer;
+}
+/*fim da div dos marcadores*/
+
+
+
+/*mensagem de erro*/
+.error {
+    display: flex;
+    gap: 10px;
+    text-align: justify;
+    padding: 20px;
+    font-size: 10px;
+    justify-content: center;
+    width: 350px;
+    background-color: #f5f5f5;
+    border-radius:  0px 0px 0px 15px;
+}
+.posicao {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+
+}
+.error button {
+    width: 60px;
+    height: all;
+    font-size: 15px;
+    cursor: pointer;
+}
+/*fim da mensagem de erro*/
+
+
+.crono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: rgba(2, 2, 31, 0.473);
+    color: #f5f5f5;
+    border-radius: 20px;
+}
+
+.crono h1 {
+    font-size: 45px;
+}
+
+.sp {
+    font-size: 40px;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btns button {
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+}
+
 #pauseBtn, #resumeBtn{
     display: none;
 }
 
-.error{
-    display: flex;
+.footer {
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50% );
     align-items: center;
+    text-align: center;
 }
-
-.error a{
-    cursor: pointer;
-    margin-left: 4px;
-}
-
-.error a:hover{
-    color: gray;
+.footer a img {
+    width: 80px;
 }

@@ -45,9 +45,10 @@ body{
 }
 .marcador input {
     cursor: pointer;
+    accent-color: orange;
 }
-/*fim da div dos marcadores*/
 
+/*fim da div dos marcadores*/
 
 
 /*mensagem de erro*/

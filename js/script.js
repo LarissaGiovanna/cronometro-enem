@@ -4,8 +4,9 @@ const startBtn = document.getElementById('startBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const resumeBtn = document.getElementById('resumeBtn');
 
+//recarregar pag
 const reload = document.getElementById('reload');
-reload.addEventListener('click', ()=>{
+reload.addEventListener('click', () => {
     document.location.reload();
 })
 
@@ -30,7 +31,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         radio.addEventListener('change', () => {
             if (radio.value == 'normal') {
                 resetTime();
-                console.log(`${radio.value}`, ' radio')
                 startBtn.addEventListener('click', startTime);
             }
             if (radio.value == 'dia1') {
@@ -56,7 +56,6 @@ resetBtn.addEventListener('click', resetTime);
 //cronometro normal
 function startTime() {
     paused = false;
-    console.log('normal', paused);
     interval = setInterval(() => {
         if (paused == false) {
             // se pausado for igual a falso, execute isso:
@@ -94,28 +93,25 @@ function startTime() {
 //primeiro dia
 function startTimeFirstDay() {
     paused = false;
-    console.log('first', paused);
     interval = setInterval(() => {
         if (paused == false) {
-            // se pausado for igual a falso, execute isso:
-            milisec += 10; //adiciona +10 milisec
+            milisec += 10;
 
-            if (milisec == 1000) { //1000 milisec = 1 segundo
-                seconds++; //adiciona +1 segundo
-                milisec = 0; //zera os milisec
+            if (milisec == 1000) {
+                seconds++;
+                milisec = 0;
             }
 
-            if (seconds == 60) { //60  segundos = 1 minuto
-                minutes++; //adiciona +1 minuto
-                seconds = 0; //zera os segundos
+            if (seconds == 60) {
+                minutes++;
+                seconds = 0;
             }
 
-            if (minutes == 60) { //60 minutos = 1 hora
-                hours++; //adiciona +1 hora
-                minutes = 0; //zera os minutos
+            if (minutes == 60) {
+                hours++;
+                minutes = 0;
             }
 
-            //mostra os valores na tela formatado
             hoursHT.textContent = formatTime(hours);
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
@@ -125,72 +121,50 @@ function startTimeFirstDay() {
 
             if (hours == 0 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 5h'
-                console.log('5h')
-                resetTime();
-                startTime();
-                pauseBtn.addEventListener('click', () => {
-                    console.log(hours, minutes, seconds)
-                    rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais'
-                    resetTime();
-                })
-                resetBtn.addEventListener('click', () => {
-                    document.location.reload();
-                })
             }
 
             if (hours == 1 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 4:30h'
-                console.log('4:30');
             }
 
             if (hours == 1 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 4h'
-                console.log('4h')
             }
 
             if (hours == 2 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 3:30h'
-                console.log('3:30')
             }
 
             if (hours == 2 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 3h'
-                console.log('3h')
             }
 
             if (hours == 3 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 2:30h'
-                console.log('2:30')
             }
 
             if (hours == 3 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 2h'
-                console.log('2h')
             }
 
             if (hours == 4 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 1:30h'
-                console.log('1:30')
             }
 
             if (hours == 4 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 1h'
-                console.log('1h')
             }
 
             if (hours == 5 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 30min'
-                console.log('30')
             }
 
             if (hours == 5 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Tempo esgotado'
-                console.log('00')
                 resetTime();
                 startTime();
                 pauseBtn.addEventListener('click', () => {
-                    console.log(hours, minutes, seconds)
-                    rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais'
+                    rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais.'
                     resetTime();
                 })
                 resetBtn.addEventListener('click', () => {
@@ -199,38 +173,36 @@ function startTimeFirstDay() {
             }
 
         }
-    }, 10)//a cada 10 milisec
+    }, 10)
 
     //aparecer botao pausar
     startBtn.style.display = 'none';
     pauseBtn.style.display = 'block';
 }
 
+
 //segundo dia
 function startTimeSecDay() {
-    console.log('sec')
     paused = false;
     interval = setInterval(() => {
         if (paused == false) {
-            // se pausado for igual a falso, execute isso:
-            milisec += 10; //adiciona +10 milisec
+            milisec += 10;
 
-            if (milisec == 1000) { //1000 milisec = 1 segundo
-                seconds++; //adiciona +1 segundo
-                milisec = 0; //zera os milisec
+            if (milisec == 1000) {
+                seconds++;
+                milisec = 0;
             }
 
-            if (seconds == 60) { //60  segundos = 1 minuto
-                minutes++; //adiciona +1 minuto
-                seconds = 0; //zera os segundos
+            if (seconds == 60) {
+                minutes++;
+                seconds = 0;
             }
 
-            if (minutes == 60) { //60 minutos = 1 hora
-                hours++; //adiciona +1 hora
-                minutes = 0; //zera os minutos
+            if (minutes == 60) {
+                hours++;
+                minutes = 0;
             }
 
-            //mostra os valores na tela formatado
             hoursHT.textContent = formatTime(hours);
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
@@ -240,66 +212,45 @@ function startTimeSecDay() {
 
             if (hours == 0 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 4:30'
-                console.log('5h')
-                resetTime();
-                startTime();
-                pauseBtn.addEventListener('click', () => {
-                    console.log(hours, minutes, seconds)
-                    rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais'
-                    resetTime();
-                })
-                resetBtn.addEventListener('click', () => {
-                    document.location.reload();
-                })
             }
 
             if (hours == 1 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 4h'
-                console.log('4:30');
             }
 
             if (hours == 1 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 3:30h'
-                console.log('4h')
             }
 
             if (hours == 2 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 3h'
-                console.log('3:30')
             }
 
             if (hours == 2 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 2:30h'
-                console.log('3h')
             }
 
             if (hours == 3 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 2h'
-                console.log('2:30')
             }
 
             if (hours == 3 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 1:30h'
-                console.log('2h')
             }
 
             if (hours == 4 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 1h'
-                console.log('1:30')
             }
 
             if (hours == 4 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 30min'
-                console.log('1h')
             }
 
             if (hours == 5 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Tempo esgotado'
-                console.log('30')
                 resetTime();
                 startTime();
                 pauseBtn.addEventListener('click', () => {
-                    console.log(hours, minutes, seconds)
                     rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais'
                     resetTime();
                 })
@@ -308,7 +259,7 @@ function startTimeSecDay() {
                 })
             }
         }
-    }, 10)//a cada 10 milisec
+    }, 10)
 
     //aparecer botao pausar
     startBtn.style.display = 'none';
@@ -331,22 +282,21 @@ function resumeTime() {
 
 function resetTime() {
     //zera tudo
-    console.log('pausado', paused)
     clearInterval(interval);
     hours = 0;
     minutes = 0;
     seconds = 0;
     milisec = 0;
-    
+
     hoursHT.textContent = '00';
     minutesHT.textContent = '00';
     secondsHT.textContent = '00';
     milisecHT.textContent = '000';
-    
+
     startBtn.style.display = 'block';
     resumeBtn.style.display = 'none';
     pauseBtn.style.display = 'none';
-    
+
     paused = true;
 }
 

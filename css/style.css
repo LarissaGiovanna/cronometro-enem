@@ -1,0 +1,6 @@
+.btns{
+    margin-top: 1rem;
+}
+#pauseBtn, #resumeBtn{
+    display: none;
+}

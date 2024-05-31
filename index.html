@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- font-awesome link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <main>
+
+        <div class="options">
+            <input type="radio" name="dia" id="normal" value="normal">
+            <label for="normal">Normal</label>
+            <input type="radio" name="dia" id="dia1" value="dia1">
+            <label for="dia1">Dia 1</label>
+            <input type="radio" name="dia" id="dia2" value="dia2">
+            <label for="dia2">Dia 2</label>
+            <div class="error">
+                <p>Caso o tempo pareça estar mais rápido ou se você achou alguma coisa estranha,  atualize a página clicando aqui:</p><button
+                    id="reload"><i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+        </div>
+
+        <h1>Cronômetro</h1>
+        <span id="hoursHT">00</span>
+        <span class="divsor">:</span>
+        <span id="minutesHT">00</span>
+        <span class="divsor">:</span>
+        <span id="secondsHT">00</span>
+        <span class="divsor">:</span>
+        <span id="milisecHT">000</span>
+
+        <div class="btns">
+            <button id="resetBtn"><i class="fa-solid fa-clock-rotate-left"></i></button>
+            <button id="startBtn"><i class="fa-solid fa-play"></i></button>
+            <button id="pauseBtn"><i class="fa-solid fa-pause"></i></button>
+            <button id="resumeBtn"><i class="fa-solid fa-play"></i></button>
+        </div>
+
+        <span id="rest"></span>
+    </main>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

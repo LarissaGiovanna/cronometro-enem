@@ -1,6 +1,8 @@
 //constantes butoes
 const resetBtn = document.getElementById('resetBtn');
-const startBtn = document.getElementById('startBtn');
+const startBtnN = document.getElementById('startBtnN');
+const startBtn1 = document.getElementById('startBtn1');
+const startBtn2 = document.getElementById('startBtn2');
 const pauseBtn = document.getElementById('pauseBtn');
 const resumeBtn = document.getElementById('resumeBtn');
 
@@ -13,6 +15,7 @@ function reload() {
 const hoursHT = document.getElementById('hoursHT');
 const minutesHT = document.getElementById('minutesHT');
 const secondsHT = document.getElementById('secondsHT');
+const rest = document.getElementById('rest');
 
 //variaveis tempo
 let interval = 0;
@@ -22,35 +25,70 @@ let seconds = 0;
 let milisec = 0;
 let paused = true;
 
-//dias
-document.addEventListener('DOMContentLoaded', (event) => {
-    const radios = document.getElementsByName('dia');
-    for (const radio of radios) {
-        radio.addEventListener('change', () => {
-            if (radio.value == 'normal') {
-                resetTime();
-                startBtn.addEventListener('click', startTime);
-            }
-            if (radio.value == 'dia1') {
-                resetTime();
-                startBtn.addEventListener('click', startTimeFirstDay);
-            }
-            if (radio.value == 'dia2') {
-                resetTime();
-                startBtn.addEventListener('click', startTimeSecDay);
-            }
-        })
+//selecionar radios
+let radioBtns = document.querySelectorAll("input[name='dia']")
+
+let findSelected = () => {
+    let selected = document.querySelector("input[name='dia']:checked").value;
+    console.log(selected);
+
+    if (selected == 'normal') {
+        console.log('cronoNormal')
+        startBtnN.style.display = 'block'
+        startBtn1.style.display = 'none'
+        startBtn2.style.display = 'none'
+
+        pauseBtn.style.display = 'none';
+        resumeBtn.style.display = 'none';
+
+        startBtnN.addEventListener('click', startTime);
+        pauseBtn.addEventListener('click', pauseTime);
+        resumeBtn.addEventListener('click', resumeTime);
+        resetBtn.addEventListener('click', resetTimeN);
     }
+
+    if (selected == 'dia1') {
+        console.log('cronoDIa1')
+        startBtnN.style.display = 'none'
+        startBtn1.style.display = 'block'
+        startBtn2.style.display = 'none'
+
+        pauseBtn.style.display = 'none';
+        resumeBtn.style.display = 'none';
+
+        startBtn1.addEventListener('click', startTimeFirstDay);
+        pauseBtn.addEventListener('click', pauseTime);
+        resumeBtn.addEventListener('click', resumeTime);
+        resetBtn.addEventListener('click', resetTime1);
+    }
+
+    if (selected == 'dia2') {
+        console.log('cronoDia2')
+        startBtnN.style.display = 'none';
+        startBtn1.style.display = 'none';
+        startBtn2.style.display = 'block';
+
+        pauseBtn.style.display = 'none';
+        resumeBtn.style.display = 'none';
+
+        startBtn2.addEventListener('click', startTimeSecDay)
+        pauseBtn.addEventListener('click', pauseTime);
+        resumeBtn.addEventListener('click', resumeTime);
+        resetBtn.addEventListener('click', resetTime2);
+    }
+}
+
+radioBtns.forEach(radioBtn => {
+    radioBtn.addEventListener('change', findSelected);
 })
 
+findSelected();
 
 //escutador de eventos click e inicia uma funcao
-pauseBtn.addEventListener('click', pauseTime);
-resumeBtn.addEventListener('click', resumeTime);
-resetBtn.addEventListener('click', resetTime);
 
 //cronometro normal
 function startTime() {
+    console.log('normalStart')
     paused = false;
     interval = setInterval(() => {
         if (paused == false) {
@@ -80,13 +118,13 @@ function startTime() {
     }, 10)//a cada 10 milisec
 
     //aparecer botao pausar
-    startBtn.style.display = 'none';
+    startBtnN.style.display = 'none';
     pauseBtn.style.display = 'block';
 }
 
-
 //primeiro dia
 function startTimeFirstDay() {
+    console.log('dia1Start');
     paused = false;
     interval = setInterval(() => {
         if (paused == false) {
@@ -111,8 +149,7 @@ function startTimeFirstDay() {
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
 
-            const rest = document.getElementById('rest');
-
+            
             if (hours == 0 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 5h'
             }
@@ -155,11 +192,11 @@ function startTimeFirstDay() {
 
             if (hours == 5 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Tempo esgotado'
-                resetTime();
+                resetTime1();
                 startTime();
                 pauseBtn.addEventListener('click', () => {
                     rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais.'
-                    resetTime();
+                    resetTime1();
                 })
                 resetBtn.addEventListener('click', () => {
                     document.location.reload();
@@ -170,13 +207,13 @@ function startTimeFirstDay() {
     }, 10)
 
     //aparecer botao pausar
-    startBtn.style.display = 'none';
+    startBtn1.style.display = 'none';
     pauseBtn.style.display = 'block';
 }
 
-
 //segundo dia
 function startTimeSecDay() {
+    console.log('dia2Start')
     paused = false;
     interval = setInterval(() => {
         if (paused == false) {
@@ -200,8 +237,6 @@ function startTimeSecDay() {
             hoursHT.textContent = formatTime(hours);
             minutesHT.textContent = formatTime(minutes);
             secondsHT.textContent = formatTime(seconds);
-
-            const rest = document.getElementById('rest');
 
             if (hours == 0 && minutes == 30 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Restam: 4:30'
@@ -241,11 +276,11 @@ function startTimeSecDay() {
 
             if (hours == 5 && minutes == 0 && seconds == 0 && milisec == 0) {
                 rest.textContent = 'Tempo esgotado'
-                resetTime();
+                resetTime2();
                 startTime();
                 pauseBtn.addEventListener('click', () => {
                     rest.textContent = 'Você gastou ' + `${hours}h,  ${minutes} min,  ${seconds} segundos ` + ' a mais'
-                    resetTime();
+                    resetTime2();
                 })
                 resetBtn.addEventListener('click', () => {
                     document.location.reload();
@@ -255,7 +290,7 @@ function startTimeSecDay() {
     }, 10)
 
     //aparecer botao pausar
-    startBtn.style.display = 'none';
+    startBtn2.style.display = 'none';
     pauseBtn.style.display = 'block';
 }
 
@@ -273,7 +308,7 @@ function resumeTime() {
     pauseBtn.style.display = 'block';
 }
 
-function resetTime() {
+function resetTimeN() {
     //zera tudo
     clearInterval(interval);
     hours = 0;
@@ -284,8 +319,58 @@ function resetTime() {
     hoursHT.textContent = '00';
     minutesHT.textContent = '00';
     secondsHT.textContent = '00';
+    rest.textContent = '';
 
-    startBtn.style.display = 'block';
+    startBtnN.style.display = 'block';
+    startBtn1.style.display = 'none';
+    startBtn2.style.display = 'none';
+
+    resumeBtn.style.display = 'none';
+    pauseBtn.style.display = 'none';
+
+    paused = true;
+}
+
+function resetTime1() {
+    //zera tudo
+    clearInterval(interval);
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    milisec = 0;
+
+    hoursHT.textContent = '00';
+    minutesHT.textContent = '00';
+    secondsHT.textContent = '00';
+    rest.textContent = '';
+
+    startBtn1.style.display = 'block';
+    startBtnN.style.display = 'none';
+    startBtn2.style.display = 'none';
+
+    resumeBtn.style.display = 'none';
+    pauseBtn.style.display = 'none';
+
+    paused = true;
+}
+
+function resetTime2() {
+    //zera tudo
+    clearInterval(interval);
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    milisec = 0;
+
+    hoursHT.textContent = '00';
+    minutesHT.textContent = '00';
+    secondsHT.textContent = '00';
+    rest.textContent = '';
+
+    startBtn1.style.display = 'none';
+    startBtnN.style.display = 'none';
+    startBtn2.style.display = 'block';
+
     resumeBtn.style.display = 'none';
     pauseBtn.style.display = 'none';
 
